@@ -11,6 +11,15 @@ if (PHP_SAPI == 'cli-server') {
 
 require __DIR__ . '/../vendor/autoload.php';
 
+define('ROOT_URI', 'C:\xampp7\htdocs\umawianie/src/');
+
+spl_autoload_register(function ($class) {
+    $file = ROOT_URI. str_replace('\\', '/', $class) .'.php';
+    if (file_exists($file)) {
+        require $file;
+    }
+});
+
 session_start();
 
 // Instantiate the app

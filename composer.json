@@ -15,7 +15,13 @@
         "php": ">=5.5.0",
         "slim/slim": "^3.1",
         "slim/php-view": "^2.0",
-        "monolog/monolog": "^1.17"
+        "monolog/monolog": "^1.17",
+        "mmucklo/krumo": "^0.5.7",
+        "slim/flash": "^0.2.0",
+        "slim/twig-view": "^2.2",
+        "adodb/adodb-php": "v5.20.9",
+        "phpmailer/phpmailer": "^5.2",
+        "kanellov/slim-twig-flash": "^0.2.0"
     },
     "require-dev": {
         "phpunit/phpunit": ">=4.8 < 6.0"

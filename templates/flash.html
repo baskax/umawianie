@@ -1,0 +1,29 @@
+<div class="flash-container">
+{% for msg in flash('danger') %}
+<div class="alert alert-error alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error!</strong> {{ msg }}
+</div>
+{% endfor %}
+
+{% for msg in flash('info') %}
+<div class="alert alert-info alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Info!</strong> {{ msg }}
+</div>
+{% endfor %}
+
+{% for msg in flash('success') %}
+<div class="alert alert-success alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> {{ msg }}
+</div>
+{% endfor %}
+
+{% for msg in flash('warning') %}
+<div class="alert alert-warning alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Warning!</strong> {{ msg }}
+</div>
+{% endfor %}
+</div>
