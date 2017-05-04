@@ -12,3 +12,12 @@ CREATE TABLE `users` (
     UNIQUE KEY (`email`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `profile` CASCADE;
+CREATE TABLE `profile` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(11) NOT NULL,
+    `name` VARCHAR(255) NOT NULL,
+    `surname` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

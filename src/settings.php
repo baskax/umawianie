@@ -17,8 +17,8 @@ return [
         ],
         'db' => [
             'host' => "localhost",
-            'user' => "sports",
-            'pass' => "tajnehaslo",
+            'user' => "root",
+            'pass' => "",
             'dbname' => "sports",
             'debug' => false
         ],

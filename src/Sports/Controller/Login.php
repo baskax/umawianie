@@ -17,8 +17,10 @@ class Login
 
     public function loginIndex($request, $response, $args)
     {
-        $this->view->render($response, 'login/login.html');
-        return $response;
+
+            $this->view->render($response, 'login/login.html');
+            return $response;
+
     }
 
     public function login($request, $response, $args)
@@ -26,13 +28,14 @@ class Login
         $body = $request->getParsedBody();
         $login = $body['username'];
         $pass = $body['password'];
-        $query = "SELECT password FROM users WHERE username='$login' AND status=1 ORDER BY id DESC LIMIT 1";
+        $query = "SELECT id,password FROM users WHERE username='$login' AND status=1 ORDER BY id DESC LIMIT 1";
         $ret = $this->db->GetRow($query);
-        if ($ret && password_verify($pass,$ret['password'])) {
+        if ($ret && password_verify($pass, $ret['password'])) {
             $_SESSION['logged'] = true;
+            $_SESSION['user_id'] = $ret['id'];
             $response = $response->withStatus(302)->withHeader('Location', '/');
         } else {
-            $this->flash->addMessage('warning','Username or password incorrect!');
+            $this->flash->addMessage('warning', 'Username or password incorrect!');
             $response = $response->withStatus(302)->withHeader('Location', '/login');
         }
         return $response;
@@ -44,11 +47,11 @@ class Login
         $login = $body['username'];
         $email = $body['email'];
         $pass = $body['password'];
-        $hash = password_hash($pass,PASSWORD_BCRYPT);
-        $query = "INSERT INTO user (username,email,password,status) VALUES ('$login','$email','$hash',1)";
+        $hash = password_hash($pass, PASSWORD_BCRYPT);
+        $query = "INSERT INTO users (username,email,password,status) VALUES ('$login','$email','$hash',1)";
         $ret = $this->db->Execute($query);
         if ($ret) {
-            $this->flash->addMessage('success','You have successfully registered an account');
+            $this->flash->addMessage('success', 'You have successfully registered an account');
             $response = $response->withStatus(302)->withHeader('Location', '/login');
         }
         return $response;

@@ -33,6 +33,13 @@ $container['LoginController'] = function($c) {
     $flash = $c->get("flash");
     return new Sports\Controller\Login($view,$db,$flash);
 };
+
+$container['ProfileController'] = function($c) {
+    $view = $c->get("view"); // retrieve the 'view' from the container
+    $db = $c->get("db");
+    $flash = $c->get("flash");
+    return new Sports\Controller\Profile($view,$db,$flash);
+};
 $container['flash'] = function () {
     return new \Slim\Flash\Messages();
 };

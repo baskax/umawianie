@@ -1,0 +1,23 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+
+        <div id="navbar-inner" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ path_for('profile_view') }}">Profile</a></li>
+                <li class="dropdown">
+                    <a href="{{ path_for('events_list') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Add</a></li>
+                        <li><a href="{{ path_for('events_list') }}">List</a></li>
+                        <li><a href="#">Manage</a></li>
+                        <li><a href="#">History</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#contact">Friends</a></li>
+
+                <li><a href="{{ path_for('logout') }}">Logout</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>

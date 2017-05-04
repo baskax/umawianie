@@ -31,9 +31,8 @@ class AuthService
         if ($this->expectLogged == true && !$this->userLogged()) {
             $this->container['flash']->addMessage('warning','You have to log in first!');
             $res = $res->withStatus(302)->withHeader('Location', '/login');
-        } elseif ($this->expectLogged == false && $this->userLogged()) {
-            $this->container['flash']->addMessage('info','You are already logged in!');
-            $res = $res->withStatus(302)->withHeader('Location', '/');
+        } elseif ($this->userLogged()) {
+            $res = $res->withStatus(302)->withHeader('Location', '/panel');
         }
 
         return $res;
