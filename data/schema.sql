@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS `users` CASCADE;
+CREATE TABLE `users` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    `status` INT(1) NOT NULL DEFAULT 0,
+    `date_created` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `ts` TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY (`username`),
+    UNIQUE KEY (`email`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

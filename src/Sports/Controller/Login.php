@@ -26,9 +26,9 @@ class Login
         $body = $request->getParsedBody();
         $login = $body['username'];
         $pass = $body['password'];
-        $query = "SELECT pass FROM user WHERE user='$login' AND status=1 ORDER BY id DESC LIMIT 1";
+        $query = "SELECT password FROM users WHERE username='$login' AND status=1 ORDER BY id DESC LIMIT 1";
         $ret = $this->db->GetRow($query);
-        if ($ret && password_verify($pass,$ret['pass'])) {
+        if ($ret && password_verify($pass,$ret['password'])) {
             $_SESSION['logged'] = true;
             $response = $response->withStatus(302)->withHeader('Location', '/');
         } else {
@@ -42,9 +42,10 @@ class Login
     {
         $body = $request->getParsedBody();
         $login = $body['username'];
+        $email = $body['email'];
         $pass = $body['password'];
         $hash = password_hash($pass,PASSWORD_BCRYPT);
-        $query = "INSERT INTO user (user,pass,status) VALUES ('$login','$hash',1)";
+        $query = "INSERT INTO user (username,email,password,status) VALUES ('$login','$email','$hash',1)";
         $ret = $this->db->Execute($query);
         if ($ret) {
             $this->flash->addMessage('success','You have successfully registered an account');

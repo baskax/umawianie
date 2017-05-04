@@ -11,7 +11,7 @@ if (PHP_SAPI == 'cli-server') {
 
 require __DIR__ . '/../vendor/autoload.php';
 
-define('ROOT_URI', 'C:\xampp7\htdocs\umawianie/src/');
+define('ROOT_URI', '/home/html/sports/src/');
 
 spl_autoload_register(function ($class) {
     $file = ROOT_URI. str_replace('\\', '/', $class) .'.php';
