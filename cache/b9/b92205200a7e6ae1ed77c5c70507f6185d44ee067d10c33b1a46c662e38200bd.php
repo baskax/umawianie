@@ -23,11 +23,11 @@ class __TwigTemplate_7e823c8df94080268b5611b32d9fd7b42eaabb00f71e7747437ed6ada78
 <head>
     <meta charset=\"UTF-8\">
     <title>Umawianie sie na sport</title>
-    <script src=\"js/jquery-3.2.1.min.js\"></script>
-    <script src=\"js/bootstrap.js\"></script>
-    <link rel=\"stylesheet\" href=\"css/bootstrap.css\">
-    <link rel=\"stylesheet\" href=\"css/bootstrap-theme.css\">
-    <link rel=\"stylesheet\" href=\"css/style.css\">
+    <script src=\"../../../js/jquery-3.2.1.min.js\"></script>
+    <script src=\"../../../js/bootstrap.js\"></script>
+    <link rel=\"stylesheet\" href=\"../../../css/bootstrap.css\">
+    <link rel=\"stylesheet\" href=\"../../../css/bootstrap-theme.css\">
+    <link rel=\"stylesheet\" href=\"../../../css/style.css\">
     ";
         // line 11
         $this->displayBlock('scripts', $context, $blocks);
@@ -48,21 +48,17 @@ class __TwigTemplate_7e823c8df94080268b5611b32d9fd7b42eaabb00f71e7747437ed6ada78
         <div id=\"navbar\" class=\"collapse navbar-collapse\">
             <ul class=\"nav navbar-nav\">
                 <li class=\"active\"><a href=\"/\">Home</a></li>
-                <li><a href=\"";
-        // line 28
-        echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("logout"), "html", null, true);
-        echo "\">Logout</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
 
 ";
+        // line 33
+        $this->loadTemplate("flash.html", "layout.html", 33)->display($context);
         // line 34
-        $this->loadTemplate("flash.html", "layout.html", 34)->display($context);
-        // line 35
         $this->displayBlock('body', $context, $blocks);
-        // line 37
+        // line 36
         echo "</body>
 </html>";
     }
@@ -72,7 +68,7 @@ class __TwigTemplate_7e823c8df94080268b5611b32d9fd7b42eaabb00f71e7747437ed6ada78
     {
     }
 
-    // line 35
+    // line 34
     public function block_body($context, array $blocks = array())
     {
     }
@@ -89,7 +85,7 @@ class __TwigTemplate_7e823c8df94080268b5611b32d9fd7b42eaabb00f71e7747437ed6ada78
 
     public function getDebugInfo()
     {
-        return array (  76 => 35,  71 => 11,  66 => 37,  64 => 35,  62 => 34,  53 => 28,  35 => 12,  33 => 11,  21 => 1,);
+        return array (  72 => 34,  67 => 11,  62 => 36,  60 => 34,  58 => 33,  35 => 12,  33 => 11,  21 => 1,);
     }
 
     public function getSourceContext()
