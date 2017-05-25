@@ -10,18 +10,16 @@ $app->group('/panel', function () {
         $this->view->render($response, 'index.html');
         return $response;
     });
-    $this->group('/events', function () {
-        $this->get('/', function ($rq, $rs, $a) {
-            $this->view->render($rs, 'events/list.html');
-            return $rs;
-        })->setName('events_list');
-    });
+
     $this->group('/profile', function () {
-        $this->get('/',\ProfileController::class. ':profileView')->setName('profile_view');
-        $this->get('/edit',\ProfileController::class.':profileEdit')->setName('profile_edit');
-        $this->post('/edit',\ProfileController::class.':profileEditAction')->setName('profile_edit_post');
+        $this->get('/', \ProfileController::class . ':profileView')->setName('profile_view');
+        $this->get('/edit', \ProfileController::class . ':profileEdit')->setName('profile_edit');
+        $this->post('/edit', \ProfileController::class . ':profileEditAction')->setName('profile_edit_post');
     });
-});
+    $this->group('/events', function() {
+        $this->get('/','\Sports\Controller\Event:listAction')->setName('events_list');
+    });
+})->add(new \Sports\Auth\AuthService($app->getContainer()));
 
 $app->get('/login', \LoginController::class . ':loginIndex');
 $app->post('/login', \LoginController::class . ':login')->setName('login');

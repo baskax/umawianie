@@ -2,5 +2,49 @@
 {% block body %}
 <div class="container">
     <div class="row"><h1>Events list</h1></div>
+    {% if events is not empty %}
+    <table class="table table-bordered table-striped table-responsive">
+        <thead>
+        <tr>
+            <th>
+                Event type
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Place
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+        <tr>
+            <td>
+                {{ event.name }}
+            </td>
+            <td>
+                {{ event.desc }}
+            </td>
+            <td>
+                {{ event.date }}
+            </td>
+            <td>
+                {{ event.lat }} // {{ event.lng }}
+            </td>
+        </tr>
+
+
+        <p>{{ event.desc }}</p>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No events found</p>
+
+    {% endif %}
 </div>
 {% endblock %}

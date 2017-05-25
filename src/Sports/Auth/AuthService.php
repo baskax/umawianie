@@ -13,27 +13,17 @@ class AuthService
      * @param $container - dependency injection container used to get access to db and flash
      * @param bool $expectLogged - variable saying if we need user to be logged in or not
      */
-    public function __construct($container,$expectLogged = true)
+   public function __construct($container,$expectLogged = true)
     {
-        $this->container = $container;
-        $this->expectLogged = $expectLogged;
-        isset($_SESSION['logged']) ? $this->isLogged = true : $this->isLogged = false;
+$this->container  = $container;
     }
-
-    public function userLogged(): bool
-    {
-        return $this->isLogged;
-    }
-
 
     public function __invoke($req, $res, $next)
     {
-        if ($this->expectLogged == true && !$this->userLogged()) {
+        if (!isset($_SESSION['logged'])) {
             $this->container['flash']->addMessage('warning','You have to log in first!');
             $res = $res->withStatus(302)->withHeader('Location', '/login');
-        } elseif ($this->userLogged()) {
-            $res = $res->withStatus(302)->withHeader('Location', '/panel');
-        }
+        } else $res = $next($req, $res);
 
         return $res;
     }
