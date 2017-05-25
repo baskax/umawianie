@@ -18,6 +18,9 @@ $app->group('/panel', function () {
     });
     $this->group('/events', function() {
         $this->get('/','\Sports\Controller\Event:listAction')->setName('events_list');
+        $this->get('/add','\Sports\Controller\Event:addAction')->setName('events_add');
+        $this->post('/add','\Sports\Controller\Event:addAction')->setName('events_add_post');
+        $this->get('/manage','\Sports\Controller\Event:manageAction')->setName('events_manage');
     });
 })->add(new \Sports\Auth\AuthService($app->getContainer()));
 

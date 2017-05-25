@@ -1,0 +1,72 @@
+{% include "index.html" %}
+{% block body %}
+<div class="container">
+    <div class="row"><h1>Add new event</h1></div>
+    <form class="form-horizontal" method="POST" action="{{ path_for('events_add_post') }}">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Add new event</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="desc">Description</label>
+                <div class="col-md-4">
+                    <input id="desc" name="desc" type="text" placeholder="" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="event_type">Event type</label>
+                <div class="col-md-4">
+                    <select id="event_type" name="event_type" class="form-control">
+                        {% for type in types %}
+                        <option value="{{ type.id }}">{{ type.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <!-- Appended Input-->
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="date">Date</label>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input id="date" name="date" class="form-control" placeholder="" type="text" required="">
+                        <span class="input-group-addon">YYYY-mm-dd HH:mm:ss</span>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="lat">Latitude</label>
+                <div class="col-md-4">
+                    <input id="lat" name="lat" type="text" placeholder="" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="lng">Longtitude</label>
+                <div class="col-md-4">
+                    <input id="lng" name="lng" type="text" placeholder="" class="form-control input-md" required="">
+
+                </div>
+            </div>
+            <!--submit -->
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="lng">Submit</label>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </fieldset>
+
+    </form>
+
+</div>
+{% endblock %}
