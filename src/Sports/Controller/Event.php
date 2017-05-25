@@ -10,19 +10,17 @@ class Event extends Base
     {
         if ($req->isPost()) {
             $body = $req->getParsedBody();
-            $lat = $body['lat'];//str_replace('.', ',',$body['lat']);
-            $lng = $body['lng'];//str_replace('.', ',',$body['lng']);
+            $lat = str_replace(',', '.',$body['lat']);
+            $lng = str_replace(',', '.',$body['lng']);
             $desc = $body['desc'];
             $type = $body['event_type'];
             $date = $body['date'];
             $id = $this->getUserID();
-            $str = "INSERT INTO events ('user_id','lat','lng','desc','event_type_id','date','status') VALUES ('$id','$lat','$lng','$desc','$type','$date',1)";
-            //k($str);
+            $str = "INSERT INTO events (user_id,lat,lng,description,event_type_id,date,status) VALUES ('$id','$lat','$lng','$desc','$type','$date','1')";
             $result = $this->getDB()->Execute($str);
-            //kd($result);
             if ($result) {
-                $this->container['flash']->addMessage('success','You have to log in first!');
-                $res = $res->withStatus(302)->withHeader('Location', '/panel/events');
+                $this->container['flash']->addMessage('success','Event added successfully!');
+                $res = $res->withStatus(302)->withHeader('Location', '/panel/events/');
             } else {
                 $this->container['flash']->addMessage('warning','Something went wrong!');
                 $res = $res->withStatus(302)->withHeader('Location', '/panel/events/add');
@@ -63,4 +61,11 @@ class Event extends Base
         return $this->getView()->render($res, 'events/list.html', $vars);
     }
 
+    public function attendAction($req,$res) {
+        $userID = $this->getUserID();
+        $strQuery = "";
+
+
+
+    }
 }
