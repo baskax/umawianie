@@ -68,16 +68,22 @@ class Event extends Base
                         `events_type`.`name`,
                         count(events_users.user_id) AS 'signed_users',
                         sum(events_users.user_id = ".$userID.") AS 'signed',
-                        `events_follow`.`user_id` as 'follow'
+                        `events_follow`.`user_id` AS 'follow'
                     FROM
                         `events`
                     JOIN `events_type` ON `events`.`event_type_id` = `events_type`.`id`
                     LEFT JOIN `events_users` ON `events`.`id` = `events_users`.`event_id`
-                    LEFT JOIN `events_follow` ON `events`.`id` = `events_follow`.`event_id` AND `events_follow`.`user_id` = ".$userID."
+                    LEFT JOIN `events_follow` ON `events`.`id` = `events_follow`.`event_id`
+                    AND `events_follow`.`user_id` = ".$userID."
                     WHERE
-                        `status` = 1 AND (`user_id` = ".$userID." OR `follow` IS NOT NULL OR OR `events_users`.`user_id` = ".$userID.")
+                        `status` = 1
                     GROUP BY
-                        `events`.`id`";
+                        `events`.`id`
+                    HAVING
+                        `events`.`user_id` = ".$userID."
+                    OR `follow` IS NOT NULL
+                    OR `signed` IS NOT NULL";
+        var_dump($strQuery); die;
         $events = $this->getDB()->getAll($strQuery);
 
         $vars = [
