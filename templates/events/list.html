@@ -7,10 +7,10 @@
         <thead>
         <tr>
             <th>
-                Event type
+                Description
             </th>
             <th>
-                Description
+                Event type
             </th>
             <th>
                 Date
@@ -30,10 +30,10 @@
         {% for event in events %}
         <tr>
             <td>
-                <a href="details/ {{ event.id }}">{{ event.name }} </a>
+                <a href="details/ {{ event.id }}">{{ event.description }} </a>
             </td>
             <td>
-                {{ event.description }}
+                {{ event.name }}
             </td>
             <td>
                 {{ event.event_date }}
