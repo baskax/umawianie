@@ -62,9 +62,21 @@ class Event extends Base
 
     public function manageAction($req,$res) {
         $userID = $this->getUserID();
-        $strQuery = "SELECT events.*, events_type.name 
-                     FROM events JOIN events_type ON events.event_type_id = events_type.id 
-                     WHERE user_id = $userID AND status = 1";
+        $strQuery = "SELECT
+                        `events`.*, DATE_FORMAT(`date`, '%Y-%m-%d %H:%i') AS `event_date`,
+                        `events_type`.`name`,
+                        count(events_users.user_id) AS 'signed_users',
+                        sum(events_users.user_id = ".$userID.") AS 'signed',
+                        `events_follow`.`user_id` as 'follow'
+                    FROM
+                        `events`
+                    JOIN `events_type` ON `events`.`event_type_id` = `events_type`.`id`
+                    LEFT JOIN `events_users` ON `events`.`id` = `events_users`.`event_id`
+                    LEFT JOIN `events_follow` ON `events`.`id` = `events_follow`.`event_id` AND `events_follow`.`user_id` = ".$userID."
+                    WHERE
+                        `status` = 1 AND (`user_id` = ".$userID." OR `follow` IS NOT NULL OR OR `events_users`.`user_id` = ".$userID.")
+                    GROUP BY
+                        `events`.`id`";
         $events = $this->getDB()->getAll($strQuery);
 
         $vars = [
