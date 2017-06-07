@@ -83,7 +83,6 @@ class Event extends Base
                         `events`.`user_id` = ".$userID."
                     OR `follow` IS NOT NULL
                     OR `signed` IS NOT NULL";
-        var_dump($strQuery); die;
         $events = $this->getDB()->getAll($strQuery);
 
         $vars = [
