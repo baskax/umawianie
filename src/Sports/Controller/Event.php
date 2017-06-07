@@ -37,10 +37,14 @@ class Event extends Base
     public function listAction($req, $res)
     {
         $userID = $this->getUserID();
-        $strQuery = "SELECT events.*, events_type.name 
-                     FROM events JOIN events_type ON events.event_type_id = events_type.id 
+        $strQuery = "SELECT events.*,DATE_FORMAT(`date`, '%Y-%m-%d %H:%i') AS `event_date`, events_type.name, events_users.user_id AS 'signed' 
+                     FROM events
+                     JOIN events_type ON events.event_type_id = events_type.id
+                     LEFT JOIN events_users ON events.id = events_users.event_id AND events_users.user_id = ".$userID."
                      WHERE status = 1";
         $events = $this->getDB()->getAll($strQuery);
+
+        //var_dump($events); die;
 
         $vars = [
             'events' => $events
@@ -64,7 +68,6 @@ class Event extends Base
     public function attendAction($req,$res) {
         $userID = $this->getUserID();
         $strQuery = "";
-
 
 
     }

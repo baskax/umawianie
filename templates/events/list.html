@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row"><h1>Events list</h1></div>
     {% if events is not empty %}
-    <table class="table table-bordered table-striped table-responsive">
+    <table id="table_event_list" class="table table-bordered table-striped table-responsive">
         <thead>
         <tr>
             <th>
@@ -18,27 +18,51 @@
             <th>
                 Place
             </th>
+            <th>
+                Slots
+            </th>
+            <th>
+                Action
+            </th>
         </tr>
         </thead>
         <tbody>
         {% for event in events %}
         <tr>
             <td>
-                {{ event.name }}
+                <a href="details/ {{ event.id }}">{{ event.name }} </a>
             </td>
             <td>
                 {{ event.description }}
             </td>
             <td>
-                {{ event.date }}
+                {{ event.event_date }}
             </td>
             <td>
                 {{ event.lat }} // {{ event.lng }}
+            </td>
+            <td>
+                {{ event.signed_users }} / {{ event.max_users }}
+            </td>
+            <td>
+                {% if event.signed is empty %}
+                <button>Zapisz</button>
+                {% else %}
+                <button>Wypisz</button>
+                {% endif %}
             </td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
+    <script>
+        $(document).ready(function() {
+            $('#table_event_list').DataTable({
+                "order": [[ 2, "desc" ]],
+                "paging":   false
+            });
+        } );
+    </script>
     {% else %}
     <p>No events found</p>
 
