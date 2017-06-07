@@ -14,9 +14,10 @@ class Event extends Base
             $lng = str_replace(',', '.',$body['lng']);
             $desc = $body['desc'];
             $type = $body['event_type'];
+            $max_users = $body['max_users'];
             $date = $body['date'];
             $id = $this->getUserID();
-            $str = "INSERT INTO events (user_id,lat,lng,description,event_type_id,date,status) VALUES ('$id','$lat','$lng','$desc','$type','$date','1')";
+            $str = "INSERT INTO events (user_id,lat,lng,description,event_type_id,date,status,max_users) VALUES ('$id','$lat','$lng','$desc','$type','$date','1',$max_users)";
             $result = $this->getDB()->Execute($str);
             if ($result) {
                 $this->container['flash']->addMessage('success','Event added successfully!');
