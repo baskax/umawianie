@@ -50,6 +50,13 @@
                 {% else %}
                 <button>Wypisz</button>
                 {% endif %}
+
+                {% if event.follow is empty %}
+                <button>+++</button>
+                {% else %}
+                <button>---</button>
+                {% endif %}
+
             </td>
         </tr>
         {% endfor %}
