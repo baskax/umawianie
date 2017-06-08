@@ -19,19 +19,23 @@ class __TwigTemplate_7e823c8df94080268b5611b32d9fd7b42eaabb00f71e7747437ed6ada78
     {
         // line 1
         echo "<!DOCTYPE html>
-<html lang=\"en\">
+<html>
 <head>
-    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"initial-scale=1.0\">
+    <meta charset=\"utf-8\">
     <title>Umawianie sie na sport</title>
+    <script src=\"https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js\"></script>
     <script src=\"../../../js/jquery-3.2.1.min.js\"></script>
     <script src=\"../../../js/bootstrap.js\"></script>
+    <script src=\"https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js\"></script>
+    <link rel=\"stylesheet\" href=\"https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css\">
     <link rel=\"stylesheet\" href=\"../../../css/bootstrap.css\">
     <link rel=\"stylesheet\" href=\"../../../css/bootstrap-theme.css\">
     <link rel=\"stylesheet\" href=\"../../../css/style.css\">
     ";
-        // line 11
+        // line 15
         $this->displayBlock('scripts', $context, $blocks);
-        // line 12
+        // line 16
         echo "</head>
 <body>
 <nav class=\"navbar navbar-inverse navbar-fixed-top\">
@@ -49,26 +53,28 @@ class __TwigTemplate_7e823c8df94080268b5611b32d9fd7b42eaabb00f71e7747437ed6ada78
             <ul class=\"nav navbar-nav\">
                 <li class=\"active\"><a href=\"/\">Home</a></li>
             </ul>
-        </div><!--/.nav-collapse -->
+        </div>
     </div>
 </nav>
-
 ";
-        // line 33
-        $this->loadTemplate("flash.html", "layout.html", 33)->display($context);
-        // line 34
-        $this->displayBlock('body', $context, $blocks);
         // line 36
+        $this->loadTemplate("menu.html", "layout.html", 36)->display($context);
+        // line 37
+        $this->loadTemplate("flash.html", "layout.html", 37)->display($context);
+        // line 38
+        $this->displayBlock('body', $context, $blocks);
+        // line 40
         echo "</body>
-</html>";
+</html>
+";
     }
 
-    // line 11
+    // line 15
     public function block_scripts($context, array $blocks = array())
     {
     }
 
-    // line 34
+    // line 38
     public function block_body($context, array $blocks = array())
     {
     }
@@ -85,7 +91,7 @@ class __TwigTemplate_7e823c8df94080268b5611b32d9fd7b42eaabb00f71e7747437ed6ada78
 
     public function getDebugInfo()
     {
-        return array (  72 => 34,  67 => 11,  62 => 36,  60 => 34,  58 => 33,  35 => 12,  33 => 11,  21 => 1,);
+        return array (  78 => 38,  73 => 15,  67 => 40,  65 => 38,  63 => 37,  61 => 36,  39 => 16,  37 => 15,  21 => 1,);
     }
 
     public function getSourceContext()

@@ -17,7 +17,7 @@ class __TwigTemplate_b91b822a3dd4d6b5a7df013917076a35e6da972b0875efbd82d0071eb7f
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        $this->loadTemplate("index.html", "profile/view.html", 1)->display($context);
+        $this->loadTemplate("layout.html", "profile/view.html", 1)->display($context);
         // line 2
         $this->displayBlock('body', $context, $blocks);
     }

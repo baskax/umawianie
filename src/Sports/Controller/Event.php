@@ -75,7 +75,7 @@ class Event extends Base
                     LEFT JOIN `events_users` ON `events`.`id` = `events_users`.`event_id`
                     LEFT JOIN `events_follow` ON `events`.`id` = `events_follow`.`event_id`
                     AND `events_follow`.`user_id` = ".$userID."
-                    WHERE
+                    WHERE 
                         `status` = 1
                     GROUP BY
                         `events`.`id`
@@ -91,10 +91,23 @@ class Event extends Base
         return $this->getView()->render($res, 'events/list.html', $vars);
     }
 
-    public function attendAction($req,$res) {
+    public function attendAction($req,$res,$args) {
+        $eventID = $args['id'];
         $userID = $this->getUserID();
-        $strQuery = "";
+        $strQuery = "INSERT INTO events_users values ('$userID','$eventID')";
+        $this->getDB()->Execute($strQuery);
+return       $res->withStatus(302)->withHeader('Location','/panel/events/');
+    }
+
+    public function detailsAction($req,$res,$args) {
+        $id = (int) $args['id'];
+        $query = "SELECT * FROM events WHERE id='$id'";
+        $event = $this->getDB()->GetRow($query);
+        return $this->getView()->render($res,'events/details.html',['event' => $event]);
+
+
 
 
     }
+
 }

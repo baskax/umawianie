@@ -1,13 +1,13 @@
 <?php
 // Routes
 $app->get('/', function ($request, $response, $args) {
-    $this->view->render($response, 'index.html');
+    $this->view->render($response, 'layout.html');
     return $response;
 })->add(new \Sports\Auth\AuthService($app->getContainer(), true));
 
 $app->group('/panel', function () {
     $this->get('', function ($request, $response, $args) {
-        $this->view->render($response, 'index.html');
+        $this->view->render($response, 'layout.html');
         return $response;
     });
 
@@ -21,6 +21,8 @@ $app->group('/panel', function () {
         $this->get('/add','\Sports\Controller\Event:addAction')->setName('events_add');
         $this->post('/add','\Sports\Controller\Event:addAction')->setName('events_add_post');
         $this->get('/manage','\Sports\Controller\Event:manageAction')->setName('events_manage');
+        $this->get('/details/{id}','\Sports\Controller\Event:detailsAction')->setName('event_detail');
+        $this->get('/attend/{id}','\Sports\Controller\Event:attendAction')->setName('event_attend');
     });
 })->add(new \Sports\Auth\AuthService($app->getContainer()));
 

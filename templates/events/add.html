@@ -1,4 +1,4 @@
-{% include "index.html" %}
+{% extends "layout.html" %}
 {% block body %}
 <div class="container">
     <div class="row"><h1>Add new event</h1></div>
@@ -46,24 +46,8 @@
                     <input id="max_users" name="max_users" type="number" placeholder="" class="form-control input-md" required="">
                 </div>
             </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-2 control-label" for="lat">Latitude</label>
-                <div class="col-md-4">
-                    <input id="lat" name="lat" type="text" placeholder="" class="form-control input-md" required="">
-
-                </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-2 control-label" for="lng">Longtitude</label>
-                <div class="col-md-4">
-                    <input id="lng" name="lng" type="text" placeholder="" class="form-control input-md" required="">
-
-                </div>
-            </div>
+                    <input id="lat" name="lat" type="hidden">
+                    <input id="lng" name="lng" type="hidden">
 
             <!--submit -->
             <div class="form-group">
@@ -75,6 +59,29 @@
         </fieldset>
 
     </form>
+<div id="map" style="float:left;height:300px; width: 600px;"></div> <script>
+     function initMap() {
+        var uluru = {lat: 51.0, lng: 17.0 };
+     var   map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: uluru
+        });
+      var marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+          draggable: true,
+          title:"drag to match event position"
+        });
+      
+
+    google.maps.event.addListener(map,'dragend',function(e) {
+      $("#lat").val(marker.getPosition().lat());
+      $("#lng").val(marker.getPosition().lng());
+    });
+ }
+    </script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI-diNGgBdd3J-VhPMZy8TrPqpWZFDADM&callback=initMap"></script>
 
 </div>
 {% endblock %}

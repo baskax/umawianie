@@ -1,4 +1,4 @@
-{% include "index.html" %}
+{% extends "layout.html" %}
 {% block body %}
 <div class="container">
     <div class="row"><h1>Events list</h1></div>
@@ -30,7 +30,7 @@
         {% for event in events %}
         <tr>
             <td>
-                <a href="details/ {{ event.id }}">{{ event.description }} </a>
+                <a href="details/{{ event.id }}">{{ event.description }}</a>
             </td>
             <td>
                 {{ event.name }}
@@ -46,7 +46,7 @@
             </td>
             <td>
                 {% if event.signed is empty %}
-                <button>Zapisz</button>
+               <a href="/panel/events/attend/{{ event.id }}"> <button>Zapisz</button></a>
                 {% else %}
                 <button>Wypisz</button>
                 {% endif %}
@@ -63,12 +63,12 @@
         </tbody>
     </table>
     <script>
-        $(document).ready(function() {
-            $('#table_event_list').DataTable({
-                "order": [[ 2, "desc" ]],
-                "paging":   false
-            });
-        } );
+//        $(document).ready(function() {
+//            $('#table_event_list').DataTable({
+ //               "order": [[ 2, "desc" ]],
+ //               "paging":   false
+ //           });
+ //       } );
     </script>
     {% else %}
     <p>No events found</p>
