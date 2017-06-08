@@ -101,13 +101,19 @@ return       $res->withStatus(302)->withHeader('Location','/panel/events/');
 
     public function detailsAction($req,$res,$args) {
         $id = (int) $args['id'];
-        $query = "SELECT * FROM events WHERE id='$id'";
+        $query = "SELECT * FROM events e WHERE e.id='$id'";
         $event = $this->getDB()->GetRow($query);
-        return $this->getView()->render($res,'events/details.html',['event' => $event]);
-
-
-
-
+        $query2 = "SELECT u.username FROM events e JOIN events_users eu ON e.id = eu.event_id JOIN users u ON u.id = eu.user_id WHERE e.id='$id'";
+        $users = $this->getDB()->GetAll($query2);
+        return $this->getView()->render($res,'events/details.html',['event' => $event, 'users' => $users]);
     }
+
+    public function unattendAction($req,$res,$args) {
+        $eventID = $args['id'];
+        $userID = $this->getUserID();
+        $query = "DELETE FROM events_users WHERE user_id='$userID' AND event_id='$eventID'";
+        $this->getDB()->Execute($query);
+        return $res->withStatus(302)->withHeader('Location','/panel/events/');
+}
 
 }

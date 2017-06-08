@@ -112,23 +112,26 @@ class __TwigTemplate_b7c5671193f2dd74c2ca2f62a730cb744bcdf7a0cb35313fbd599a38eb9
                 ";
                 } else {
                     // line 51
-                    echo "                <button>Wypisz</button>
+                    echo "<a href=\"/panel/events/unattend/";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["event"], "id", array()), "html", null, true);
+                    echo "\"> <button>Wypisz</button></a>
+
                 ";
                 }
-                // line 53
+                // line 54
                 echo "
                 ";
-                // line 54
+                // line 55
                 if (twig_test_empty(twig_get_attribute($this->env, $this->getSourceContext(), $context["event"], "follow", array()))) {
-                    // line 55
+                    // line 56
                     echo "                <button>+++</button>
                 ";
                 } else {
-                    // line 57
+                    // line 58
                     echo "                <button>---</button>
                 ";
                 }
-                // line 59
+                // line 60
                 echo "
             </td>
         </tr>
@@ -137,25 +140,25 @@ class __TwigTemplate_b7c5671193f2dd74c2ca2f62a730cb744bcdf7a0cb35313fbd599a38eb9
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 63
+            // line 64
             echo "        </tbody>
     </table>
     <script>
-//        \$(document).ready(function() {
-//            \$('#table_event_list').DataTable({
- //               \"order\": [[ 2, \"desc\" ]],
- //               \"paging\":   false
- //           });
- //       } );
+        \$(document).ready(function() {
+            \$('#table_event_list').DataTable({
+               \"order\": [[ 2, \"desc\" ]],
+               \"paging\":   false
+           });
+       } );
     </script>
     ";
         } else {
-            // line 74
+            // line 75
             echo "    <p>No events found</p>
 
     ";
         }
-        // line 77
+        // line 78
         echo "</div>
 ";
     }
@@ -172,7 +175,7 @@ class __TwigTemplate_b7c5671193f2dd74c2ca2f62a730cb744bcdf7a0cb35313fbd599a38eb9
 
     public function getDebugInfo()
     {
-        return array (  159 => 77,  154 => 74,  141 => 63,  132 => 59,  128 => 57,  124 => 55,  122 => 54,  119 => 53,  115 => 51,  109 => 49,  107 => 48,  99 => 45,  91 => 42,  85 => 39,  79 => 36,  71 => 33,  67 => 31,  63 => 30,  37 => 6,  35 => 5,  31 => 3,  28 => 2,  11 => 1,);
+        return array (  162 => 78,  157 => 75,  144 => 64,  135 => 60,  131 => 58,  127 => 56,  125 => 55,  122 => 54,  115 => 51,  109 => 49,  107 => 48,  99 => 45,  91 => 42,  85 => 39,  79 => 36,  71 => 33,  67 => 31,  63 => 30,  37 => 6,  35 => 5,  31 => 3,  28 => 2,  11 => 1,);
     }
 
     public function getSourceContext()

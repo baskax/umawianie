@@ -62,11 +62,28 @@ class __TwigTemplate_fa33aeb595e28ca3dcf7ee224cd5a71d6579906a6387e2cf6f14b9eb48a
                 ";
         }
         // line 17
-        echo "
- <div id=\"map\" style=\"float:left;height:300px; width: 600px;\"></div> <script>
+        echo "<p>Zapisani uzytkownicy</p>
+ ";
+        // line 18
+        if ( !twig_test_empty(($context["users"] ?? null))) {
+            // line 19
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(($context["users"] ?? null));
+            foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
+                // line 20
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["user"], "username", array()), "html", null, true);
+                echo "<br/>
+";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['user'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+        }
+        // line 23
+        echo " <div id=\"map\" style=\"float:left;height:300px; width: 600px;\"></div> <script>
      function initMap() {
         var uluru = {lat: ";
-        // line 20
+        // line 25
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["event"] ?? null), "lat", array()), "html", null, true);
         echo ", lng: ";
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), ($context["event"] ?? null), "lng", array()), "html", null, true);
@@ -99,7 +116,7 @@ class __TwigTemplate_fa33aeb595e28ca3dcf7ee224cd5a71d6579906a6387e2cf6f14b9eb48a
 
     public function getDebugInfo()
     {
-        return array (  70 => 20,  65 => 17,  61 => 15,  57 => 13,  55 => 12,  52 => 11,  48 => 9,  44 => 7,  42 => 6,  38 => 5,  34 => 4,  31 => 3,  28 => 2,  11 => 1,);
+        return array (  87 => 25,  83 => 23,  74 => 20,  70 => 19,  68 => 18,  65 => 17,  61 => 15,  57 => 13,  55 => 12,  52 => 11,  48 => 9,  44 => 7,  42 => 6,  38 => 5,  34 => 4,  31 => 3,  28 => 2,  11 => 1,);
     }
 
     public function getSourceContext()

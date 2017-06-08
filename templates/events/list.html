@@ -48,7 +48,8 @@
                 {% if event.signed is empty %}
                <a href="/panel/events/attend/{{ event.id }}"> <button>Zapisz</button></a>
                 {% else %}
-                <button>Wypisz</button>
+<a href="/panel/events/unattend/{{ event.id }}"> <button>Wypisz</button></a>
+
                 {% endif %}
 
                 {% if event.follow is empty %}
@@ -63,12 +64,12 @@
         </tbody>
     </table>
     <script>
-//        $(document).ready(function() {
-//            $('#table_event_list').DataTable({
- //               "order": [[ 2, "desc" ]],
- //               "paging":   false
- //           });
- //       } );
+        $(document).ready(function() {
+            $('#table_event_list').DataTable({
+               "order": [[ 2, "desc" ]],
+               "paging":   false
+           });
+       } );
     </script>
     {% else %}
     <p>No events found</p>

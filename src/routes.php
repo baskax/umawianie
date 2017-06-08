@@ -23,6 +23,7 @@ $app->group('/panel', function () {
         $this->get('/manage','\Sports\Controller\Event:manageAction')->setName('events_manage');
         $this->get('/details/{id}','\Sports\Controller\Event:detailsAction')->setName('event_detail');
         $this->get('/attend/{id}','\Sports\Controller\Event:attendAction')->setName('event_attend');
+        $this->get('/unattend/{id}','\Sports\Controller\Event:unattendAction')->setName('event_unattend');
     });
 })->add(new \Sports\Auth\AuthService($app->getContainer()));
 
