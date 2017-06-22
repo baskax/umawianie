@@ -16,7 +16,7 @@ return [
             'level' => \Monolog\Logger::DEBUG,
         ],
         'db' => [
-            'host' => "localhost",
+            'host' => "fbla.pl:3306",
             'user' => "umawianie",
             'pass' => "tajnehaslo",
             'dbname' => "sports",
